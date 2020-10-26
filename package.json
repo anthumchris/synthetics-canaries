@@ -1,0 +1,13 @@
+{
+  "name": "synthetics-canaries",
+  "version": "1.0.0",
+  "repository": "git@github.com:AnthumChris/synthetics-canaries.git",
+  "license": "MIT",
+  "scripts": {
+    "canaries-run": "node src/test/run-canaries-locally.js",
+    "canaries-package": "rm -rf tmp/canary-export && mkdir -p $_/nodejs && cp -r src/test/canaries \"$_/node_modules\" && cd tmp/canary-export && zip canaries-uploaded.zip -r nodejs"
+  },
+  "devDependencies": {
+    "puppeteer": "3.3.0"
+  }
+}
