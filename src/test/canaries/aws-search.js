@@ -1,10 +1,6 @@
 const { info, getPage, screenshot } = require('./util/runtime')
+const { Params } = require('./util/params')
 
-// For demo only. These would be obtained dynamically (env vars, config files, etc)
-const params = {
-  searchHome:  'https://aws.amazon.com/search/',
-  searchQuery: 'cloudwatch synthetics',
-}
 
 async function runTests() {
   const page = await getPage()
@@ -12,6 +8,20 @@ async function runTests() {
 }
 
 async function testAwsSearch(page) {
+  /* Example using SSM Parameter Store:
+   *
+   *   const params = {
+   *     searchHome:  await Params.get('searchHome'),
+   *     searchQuery: await Params.get('searchQuery'),
+   *   }
+   */
+
+  // For demo only. These would be obtained dynamically (env vars, Paramater Store, etc)
+  const params = {
+    searchHome:  'https://aws.amazon.com/search/',
+    searchQuery: 'cloudwatch synthetics',
+  }
+
   info('opening AWS search home...')
   await page.goto(params.searchHome)
   const searchBox = await page.waitForSelector('#awsm-search-form input[type=text]', { visible: true })

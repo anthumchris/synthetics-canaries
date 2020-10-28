@@ -8,6 +8,7 @@
     "canaries-package": "rm -rf tmp/canary-export && mkdir -p $_/nodejs && cp -r src/test/canaries \"$_/node_modules\" && cd tmp/canary-export && zip canaries-uploaded.zip -r nodejs"
   },
   "devDependencies": {
+    "aws-sdk": "^2.782.0",
     "puppeteer": "3.3.0"
   }
 }
